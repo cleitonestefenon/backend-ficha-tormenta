@@ -17,11 +17,11 @@ public class Anotacoes extends Auditoria implements Serializable {
     @Column(name = "ano_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "ano_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "ano_descricao")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "ano_personagem_id")
+    private Personagem personagem;
 }

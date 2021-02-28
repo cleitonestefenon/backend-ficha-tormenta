@@ -17,11 +17,11 @@ public class HabilidadeRacaOrigem extends Auditoria implements Serializable {
     @Column(name = "hro_id")
     private long hro_id;
 
-    @ManyToOne
-    @JoinColumn(name = "hro_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "hro_descricao")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "hro_personagem_id")
+    private Personagem personagem;
 }

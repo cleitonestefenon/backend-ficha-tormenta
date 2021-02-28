@@ -16,11 +16,9 @@ public class PersonagemPericia extends Auditoria implements Serializable {
     @Column(name = "pep_id")
     private long pep_id;
 
-    @ManyToOne
     @JoinColumn(name = "pep_personagem_id")
     private Personagem personagem;
 
-    @ManyToOne
     @JoinColumn(name = "pep_pericia_id")
     private Pericia pericia;
 

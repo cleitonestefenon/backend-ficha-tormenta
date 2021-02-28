@@ -16,10 +16,6 @@ public class Defesa extends Auditoria implements Serializable {
     @Column(name = "def_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "def_personagem_id")
-    private Personagem personagem;
-
     @Column(name = "def_total")
     private int total;
 
@@ -34,4 +30,8 @@ public class Defesa extends Auditoria implements Serializable {
 
     @Column(name = "def_bonus_escudo")
     private int bonusEscudo;
+
+    @ManyToOne
+    @JoinColumn(name = "def_personagem_id")
+    private Personagem personagem;
 }

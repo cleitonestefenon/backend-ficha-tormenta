@@ -16,10 +16,10 @@ public class Magia extends Auditoria implements Serializable {
     @Column(name = "mag_id")
     private long id;
 
+    @Column(name = "mag_descricao", length = 1000)
+    private String descricao;
+
     @ManyToOne
     @JoinColumn(name = "mag_personagem_id")
     private Personagem personagem;
-
-    @Column(name = "mag_descricao", length = 1000)
-    private String descricao;
 }

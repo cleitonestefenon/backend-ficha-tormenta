@@ -16,11 +16,9 @@ public class PersonagemAtributo extends Auditoria implements Serializable {
     @Column(name = "pea_id")
     private long id;
 
-    @ManyToOne
     @JoinColumn(name = "pea_personagem_id")
     private Personagem personagem;
 
-    @ManyToOne
     @JoinColumn(name = "pea_atributo_id")
     private Atributo atributo;
 

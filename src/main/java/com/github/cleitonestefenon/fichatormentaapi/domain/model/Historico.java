@@ -17,11 +17,11 @@ public class Historico extends Auditoria implements Serializable {
     @Column(name = "his_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "his_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "his_descricao")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "his_personagem_id")
+    private Personagem personagem;
 }
