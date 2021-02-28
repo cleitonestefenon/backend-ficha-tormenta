@@ -26,6 +26,6 @@ public class Pessoa extends Auditoria implements Serializable {
     @Column(name = "pes_senha", nullable = false)
     private String senha;
 
-    @OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pessoa", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Personagem> personagens;
 }

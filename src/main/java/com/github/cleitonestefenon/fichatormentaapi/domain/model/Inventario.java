@@ -17,11 +17,11 @@ public class Inventario extends Auditoria implements Serializable {
     @Column(name = "inv_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "inv_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "inv_descricao")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "inv_personagem_id")
+    private Personagem personagem;
 }

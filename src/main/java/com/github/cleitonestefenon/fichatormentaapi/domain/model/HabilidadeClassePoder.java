@@ -17,11 +17,11 @@ public class HabilidadeClassePoder extends Auditoria implements Serializable {
     @Column(name = "hcp_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "hcp_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "hcp_descricao")
     private String hcp_descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "hcp_personagem_id")
+    private Personagem personagem;
 }

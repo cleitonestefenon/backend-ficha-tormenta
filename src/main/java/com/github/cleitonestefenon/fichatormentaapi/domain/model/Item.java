@@ -16,13 +16,13 @@ public class Item extends Auditoria implements Serializable {
     @Column(name = "ite_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "ite_personagem_id")
-    private Personagem personagem;
-
     @Column(name = "ite_descricao")
     private String descricao;
 
     @Column(name = "ite_descricao_magico")
     private String descricaoMagico;
+
+    @ManyToOne
+    @JoinColumn(name = "ite_personagem_id")
+    private Personagem personagem;
 }

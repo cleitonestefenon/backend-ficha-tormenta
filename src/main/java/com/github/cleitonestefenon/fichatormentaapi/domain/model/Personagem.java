@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity(name = "personagem")
@@ -53,6 +54,36 @@ public class Personagem extends Auditoria implements Serializable {
     private int pontosExperiencia;
 
     @ManyToOne
-    @JoinColumn(name = "per_pessoa_id")
+    @JoinColumn(name = "per_pessoa_id", nullable = false)
     private Pessoa pessoa;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Item> item;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Magia> magia;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Inventario> inventario;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<HabilidadeClassePoder> habilidadeClassePoder;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Anotacoes> anotacoes;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Historico> historico;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Ataque> ataque;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<HabilidadeRacaOrigem> habilidadeRacaOrigem;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Proeficiencia> proeficiencia;
+
+    @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Defesa> defesa;
 }

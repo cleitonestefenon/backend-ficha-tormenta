@@ -17,11 +17,11 @@ public class Proeficiencia extends Auditoria implements Serializable {
     @Column(name = "pro_id")
     private long pro_id;
 
-    @ManyToOne
-    @JoinColumn(name = "pro_personagem_id")
-    private Personagem personagem;
-
     @Type(type = "text")
     @Column(name = "pro_descricao")
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "pro_personagem_id")
+    private Personagem personagem;
 }

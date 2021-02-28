@@ -16,10 +16,6 @@ public class Ataque extends Auditoria implements Serializable {
     @Column(name = "ata_id")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "ata_personagem_id")
-    private Personagem personagem;
-
     @Column(name = "ata_descricao")
     private String descricao;
 
@@ -37,4 +33,8 @@ public class Ataque extends Auditoria implements Serializable {
 
     @Column(name = "ata_alcance")
     private String alcance;
+
+    @ManyToOne
+    @JoinColumn(name = "ata_personagem_id")
+    private Personagem personagem;
 }
