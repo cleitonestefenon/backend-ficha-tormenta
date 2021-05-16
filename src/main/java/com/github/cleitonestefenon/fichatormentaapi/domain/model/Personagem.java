@@ -7,6 +7,7 @@ import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,6 +57,12 @@ public class Personagem extends Auditoria implements Persistable<UUID> {
 
     @Column(name = "per_pontos_exp")
     private int pontosExperiencia;
+
+    @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL)
+    private Collection<PersonagemPericia> personagemPericias;
+
+    @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL)
+    private Collection<PersonagemAtributo> personagemAtributos;
 
     @ManyToOne
     @JoinColumn(name = "per_pessoa_id", nullable = false)
