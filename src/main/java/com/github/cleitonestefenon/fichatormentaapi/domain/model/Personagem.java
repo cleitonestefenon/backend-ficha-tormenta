@@ -2,8 +2,6 @@ package com.github.cleitonestefenon.fichatormentaapi.domain.model;
 
 import com.github.cleitonestefenon.fichatormentaapi.domain.model.auditoria.Auditoria;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,13 +11,12 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "personagem")
-public class Personagem extends Auditoria implements Persistable<UUID> {
+public class Personagem extends Auditoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
-    @GeneratedValue(generator = "UUIDGenerator")
-    @Column(name = "per_id", updatable = false, nullable = false)
+    @GeneratedValue
+    @Column(columnDefinition = "uuid", name = "per_id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "per_nome")
@@ -98,8 +95,4 @@ public class Personagem extends Auditoria implements Persistable<UUID> {
     @OneToMany(mappedBy = "personagem", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Defesa> defesa;
 
-    @Override
-    public boolean isNew() {
-        return false;
-    }
 }

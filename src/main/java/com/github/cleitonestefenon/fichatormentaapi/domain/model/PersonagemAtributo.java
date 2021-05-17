@@ -2,21 +2,19 @@ package com.github.cleitonestefenon.fichatormentaapi.domain.model;
 
 import com.github.cleitonestefenon.fichatormentaapi.domain.model.auditoria.Auditoria;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Data
 @Entity(name = "personagem_atributo")
-public class PersonagemAtributo extends Auditoria implements Persistable<UUID> {
+public class PersonagemAtributo extends Auditoria implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
-    @GeneratedValue(generator = "UUIDGenerator")
-    @Column(name = "pea_id", updatable = false, nullable = false)
+    @GeneratedValue
+    @Column(columnDefinition = "uuid", name = "pea_id", updatable = false, nullable = false)
     private UUID id;
 
     @ManyToOne()
@@ -33,8 +31,4 @@ public class PersonagemAtributo extends Auditoria implements Persistable<UUID> {
     @Column(name = "pea_modificador")
     private int modificador;
 
-    @Override
-    public boolean isNew() {
-        return false;
-    }
 }
