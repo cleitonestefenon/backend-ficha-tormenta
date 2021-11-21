@@ -2,11 +2,13 @@ package com.github.cleitonestefenon.fichatormentaapi.domain.model;
 
 import com.github.cleitonestefenon.fichatormentaapi.domain.model.auditoria.Auditoria;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "personagem_pericia")
 public class PersonagemPericia extends Auditoria implements Serializable {
@@ -14,8 +16,14 @@ public class PersonagemPericia extends Auditoria implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(columnDefinition = "uuid", name = "pep_id", updatable = false, nullable = false)
-    private UUID id;
+    @Column(columnDefinition = "uuid", name = "pep_id")
+    private UUID pep_id;
+
+    @JoinColumn(name = "pep_personagem_id")
+    private Personagem personagem;
+
+    @JoinColumn(name = "pep_pericia_id")
+    private Pericia pericia;
 
     @Column(name = "pep_bonus_nivel")
     private int bonusNivel;
@@ -25,13 +33,4 @@ public class PersonagemPericia extends Auditoria implements Serializable {
 
     @Column(name = "pep_bonus_treino")
     private int bonusTreino;
-
-    @ManyToOne()
-    @JoinColumn(name = "pep_personagem_id")
-    private Personagem personagem;
-
-    @ManyToOne()
-    @JoinColumn(name = "pep_pericia_id")
-    private Pericia pericia;
-
 }
